@@ -39,3 +39,42 @@
 [2026-05-08 17:40:22,969: INFO: data_ingestion: Downloading data from Google Drive]
 [2026-05-08 17:40:42,346: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/190TPBZMV8J__LYKfNpdWAqMzdqRDY6HP/view?usp=sharing into file artifacts/data_ingestion/data.zip]
 [2026-05-08 17:40:52,155: INFO: main: >>>>>> stage Data Ingestion stage completed]
+[2026-05-12 12:41:29,774: INFO: common: Yaml file loaded successfully]
+[2026-05-12 12:41:29,812: INFO: common: Yaml file loaded successfully]
+[2026-05-12 12:41:29,815: INFO: common: Created Directory:artifacts]
+[2026-05-12 12:41:29,815: INFO: common: Created Directory:artifacts/prepare_base_model]
+[2026-05-12 12:41:31,210: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-12 12:42:56,240: INFO: common: Yaml file loaded successfully]
+[2026-05-12 12:42:56,244: INFO: common: Yaml file loaded successfully]
+[2026-05-12 12:42:56,244: INFO: common: Created Directory:artifacts]
+[2026-05-12 12:42:56,248: INFO: common: Created Directory:artifacts/prepare_base_model]
+[2026-05-12 12:42:56,528: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-12 12:42:56,990: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-15 17:20:33,585: INFO: main: >>>>>> stage Data Ingestion stage started<<<<<<]
+[2026-05-15 17:20:33,610: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:20:33,610: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:20:33,619: INFO: common: Created Directory:artifacts]
+[2026-05-15 17:20:33,619: ERROR: main: 'ConfigurationManager' object has no attribute 'get_data_ingestion_config']
+Traceback (most recent call last):
+  File "C:\PROJECTS\End_to_end_Kidney_Disease_Classification_Deep_learning_project\main.py", line 10, in <module>
+    data_ingestion.main()
+  File "C:\PROJECTS\End_to_end_Kidney_Disease_Classification_Deep_learning_project\src\cnnClassifier\pipeline\stage_01_data_ingestion.py", line 13, in main
+    data_ingestion_config = config.get_data_ingestion_config()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ConfigurationManager' object has no attribute 'get_data_ingestion_config'
+[2026-05-15 17:24:35,200: INFO: main: >>>>>> stage Data Ingestion stage started<<<<<<]
+[2026-05-15 17:24:35,200: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:24:35,200: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:24:35,200: INFO: common: Created Directory:artifacts]
+[2026-05-15 17:24:35,200: INFO: common: Created Directory:artifacts/data_ingestion]
+[2026-05-15 17:24:35,200: INFO: data_ingestion: Downloading data from Google Drive]
+[2026-05-15 17:25:05,932: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/190TPBZMV8J__LYKfNpdWAqMzdqRDY6HP/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2026-05-15 17:25:18,177: INFO: main: >>>>>> stage Data Ingestion stage completed]
+[2026-05-15 17:25:18,177: INFO: main: >>>>>> stage Prepare base model started<<<<<<]
+[2026-05-15 17:25:18,177: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:25:18,177: INFO: common: Yaml file loaded successfully]
+[2026-05-15 17:25:18,177: INFO: common: Created Directory:artifacts]
+[2026-05-15 17:25:18,177: INFO: common: Created Directory:artifacts/prepare_base_model]
+[2026-05-15 17:25:18,792: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-15 17:25:19,006: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-15 17:25:19,138: INFO: main: >>>>>> stage Prepare base model completed]
