@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Kidney Disease Classification</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+
+        body {
+            background-color: #eff2f9;
+        }
+
+        .iupload h3 {
+            color: #1b2d6b;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .img-part {
+            height: 300px;
+            width: 300px;
+            margin: 0px auto;
+        }
+
+        .image-part {
+            height: 300px;
+            width: 300px;
+            border: 1px solid #1b2d6b;
+        }
+
+        .image-part img {
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            display: none;
+            padding: 5px;
+        }
+
+        .res-part {
+            border: 1px solid #dedede;
+            height: 310px;
+            width: 100%;
+            padding: 15px;
+            overflow: auto;
+            background: white;
+        }
+
+        .btn-part {
+            width: 325px;
+        }
+
+        button.btn {
+            border-radius: 0px;
+        }
+
+        .right-part {
+            border: 1px solid #dedede;
+            padding: 20px;
+            background: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="main container">
+
+    <section class="iupload mt-5">
+
+        <h3 class="text-center py-4">
+            Kidney Disease Classification
+        </h3>
+
+        <div class="row">
+
+            <!-- LEFT SIDE -->
+            <div class="img-part col-md-6">
+
+                <div class="image-part">
+                    <img src="" id="photo" class="img-fluid">
+                </div>
+
+                <div class="btn-part">
+
+                    <form id="upload-data" class="pt-3">
+
+                        <div class="input-group mt-3 row">
+
+                            <button type="button"
+                                    class="btn btn-primary col-md-5 ml-3 mr-4"
+                                    id="uploadBtn">
+                                Upload
+                            </button>
+
+                            <button id="predictBtn"
+                                    type="button"
+                                    class="btn btn-success col-md-5">
+                                Predict
+                            </button>
+
+                        </div>
+
+                        <input type="hidden"
+                               id="url"
+                               value="/predict"/>
+
+                        <input name="upload"
+                               type="file"
+                               id="fileinput"
+                               style="display:none;"/>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-md-6 right-part">
+
+                <h4 class="text-center mb-4">
+                    Prediction Results
+                </h4>
+
+                <div class="res-part">
+                    <div class="jsonRes"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+
+    let base_data = "";
+
+    // Upload button click
+    $("#uploadBtn").click(function () {
+        $("#fileinput").trigger('click');
+    });
+
+
+    // Read uploaded image
+    $("#fileinput").change(function () {
+
+        let reader = new FileReader();
+
+        reader.onload = function (event) {
+
+            let dataURL = event.target.result;
+
+            $("#photo").attr("src", dataURL);
+            $("#photo").show();
+
+            base_data = dataURL.split(",")[1];
+        };
+
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+    // Predict button
+    $("#predictBtn").click(function () {
+
+        if (base_data === "") {
+            alert("Please upload an image first");
+            return;
+        }
+
+        let url = $("#url").val();
+
+        $.ajax({
+
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+
+            data: JSON.stringify({
+                image: base_data
+            }),
+
+            success: function (res) {
+
+                console.log(res);
+
+                $(".jsonRes").html(`
+                    <h4 class="text-success">
+                        Prediction Successful
+                    </h4>
+                    <hr>
+                    <h5>
+                        Result: ${JSON.stringify(res)}
+                    </h5>
+                `);
+            },
+
+            error: function (err) {
+
+                console.log(err);
+
+                $(".jsonRes").html(`
+                    <h4 class="text-danger">
+                        Prediction Failed
+                    </h4>
+                `);
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+
