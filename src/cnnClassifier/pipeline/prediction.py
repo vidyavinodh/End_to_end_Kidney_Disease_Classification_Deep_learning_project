@@ -14,7 +14,7 @@ class PredictionPipeline:
 
         # Load trained model
         model = load_model(
-            os.path.join("artifacts", "training", "model.h5")
+            os.path.join("model", "model.h5")
         )
 
         # Load image
